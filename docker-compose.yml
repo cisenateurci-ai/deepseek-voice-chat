@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  voice-server:
+    build: .
+    container_name: deepseek-voice-chat
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models   # pour conserver les modèles entre les reconstructions
+    environment:
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+    restart: unless-stopped
